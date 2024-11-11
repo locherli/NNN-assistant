@@ -49,6 +49,15 @@ public class InfoManager {
             throw new RuntimeException(e);
         }
 
+        if (records.isEmpty()) {
+            return;
+        }
+        initialize();
+
+    }
+
+    public void initialize() {
+
         // calculate
         sum = records.size();
         curDate = LocalDate.now();
@@ -78,11 +87,12 @@ public class InfoManager {
         });
         yearCount = count.get();
 
-        lastTime = records.get(records.size()).getDate();
+        lastTime = records.get(records.size() - 1).getDate();
         sinceLastTime = Period.between(lastTime, curDate);
+
     }
-    
-    //save records into log file.
+
+    // save records into log file.
     public void saveData() {
         File f = new File("./records.log");
         if (!f.exists()) {
@@ -123,7 +133,7 @@ public class InfoManager {
         records.add(newRecord);
     }
 
-    //getter and setter
+    // getter and setter
     public Integer getSum() {
         return sum;
     }
