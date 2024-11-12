@@ -61,8 +61,9 @@ public class GUI {
                 IM.masturbate(reflectionField.getText().replace("\n"," ").replace(",", "，"));
                 System.out.println("masturbate");
                 f.dispose();
-                IM.printRecords();
+                frame.dispose();
                 IM.saveData();
+                main(args);
             });
             f.add(submit);
 
